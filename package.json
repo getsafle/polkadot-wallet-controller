@@ -1,0 +1,48 @@
+{
+  "name": "@getsafle/polkadot-wallet-controller",
+  "version": "1.0.0",
+  "description": "",
+  "engines": {
+    "node": ">= 10"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint --fix . --ext .js",
+    "test": "mocha --timeout 15000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getsafle/polkadot-wallet-controller.git"
+  },
+  "keywords": [
+    "polkadot",
+    "keyring"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/getsafle/polkadot-wallet-controller/issues"
+  },
+  "homepage": "https://github.com/getsafle/polkadot-wallet-controller#readme",
+  "dependencies": {
+    "@polkadot/api": "^4.17.1",
+    "@polkadot/rpc-provider": "^6.2.1",
+    "@polkadot/util-crypto": "^7.4.1",
+    "@polkadot/x-randomvalues": "^7.4.1",
+    "@substrate/txwrapper-polkadot": "^1.2.17",
+    "axios": "^0.21.4",
+    "bip39": "^2.2.0",
+    "crypto-js": "^4.0.0",
+    "ed25519-hd-key": "^1.2.0",
+    "hdkey": "^2.0.1"
+  },
+  "devDependencies": {
+    "@metamask/eslint-config": "^4.0.0",
+    "eslint": "^7.7.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-mocha": "^8.0.0",
+    "eslint-plugin-node": "^11.1.0",
+    "mocha": "^8.1.3"
+  }
+}
