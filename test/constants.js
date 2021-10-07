@@ -1,6 +1,7 @@
 module.exports = {
     HD_WALLET_12_MNEMONIC_LEARNING_DEMO: 'swim special coffee obscure right bamboo you sand powder swallow inflict company',
-    HD_WALLET_12_MNEMONIC: 'affair entry detect broom axis crawl found valve bamboo taste broken hundred',
+    HD_WALLET_12_MNEMONIC000: 'affair entry detect broom axis crawl found valve bamboo taste broken hundred',
+    HD_WALLET_12_MNEMONIC: 'rescue asset angle own civil usual game example guess exotic mixed embody',
     HD_WALLET_24_MNEMONIC: 'begin pyramid grit rigid mountain stamp legal item result peace wealth supply satoshi elegant roof identify furnace march west chicken pen gorilla spot excuse',
 
     TESTING_MESSAGE_1: "ThisMessageOneIsForTesting",
@@ -12,7 +13,8 @@ module.exports = {
         MAINNET: "MAINNET"
     },
     POLKADOT_TRANSACTION_TYPE: {
-        NATIVE_TRANSFER: "NATIVE_TRANSFER"
+        NATIVE_TRANSFER: "NATIVE_TRANSFER",
+        STACKING: "STACKING"
     },
     POLKADOT_DECIMAL: {
         TESTNET_DECIMAL: 12, // Polkadot testnet is WESTEND 

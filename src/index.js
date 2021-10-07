@@ -20,7 +20,7 @@ const { hexToU8a, isHex, stringToU8a, u8aToHex } = require('@polkadot/util');
 const { construct, methods, getTxHash } = require("@substrate/txwrapper-polkadot");
 
 
-const { polkadot: { HD_PATH }, polkadot_transaction: { NATIVE_TRANSFER }, polkadot_network: { MAINNET, TESTNET } } = require('./config/index')
+const { polkadot: { HD_PATH }, polkadot_transaction: { NATIVE_TRANSFER, STACKING }, polkadot_network: { MAINNET, TESTNET } } = require('./config/index')
 
 
 class DOTHdKeyring {
@@ -45,14 +45,8 @@ class DOTHdKeyring {
   }
 
   async exportPrivateKey() {
-    // const keyring = new Keyring({ type: "sr25519" });
-    // const account = keyring.addFromMnemonic(this.mnemonic);
-    // const pkcs8 = account.encodePkcs8()
-    // return { wallet: this.wallet, address: this.address }
-    // console.log("pkcs8 ", pkcs8, u8aToHex(pkcs8), "\n", u8aToHex(keyPair.secretKey))
-
-    const keyPair = helpers.utils.generateKeyPair(this.mnemonic)
-    return { privateKey: u8aToHex(keyPair.secretKey) }
+    const userSeed = mnemonicToMiniSecret(this.mnemonic);
+    return { privateKey: u8aToHex(userSeed) }
   }
 
   /**
@@ -66,7 +60,7 @@ class DOTHdKeyring {
    * @returns 
    */
   async signTransaction(transaction, connectionUrl) {
-    const { data: { to, amount }, txnType } = transaction
+    const { txnType } = transaction
 
     const keyring = new Keyring({ type: "sr25519" });
     const account = keyring.addFromMnemonic(this.mnemonic);
@@ -76,6 +70,7 @@ class DOTHdKeyring {
     const api = await ApiPromise.create({ provider: provider });
 
     if (txnType === NATIVE_TRANSFER) {
+      const { data: { to, amount } } = transaction
       const txHash = await api.tx.balances
         .transfer(to, amount)
         .signAsync(account);
@@ -83,7 +78,8 @@ class DOTHdKeyring {
       console.log("txHash ", txHash)
       // --------------------------
 
-      return { signedTransaction: txHash };
+      // provider.disconnect()
+      return { signedTransaction: txHash, provider };
     }
 
   }

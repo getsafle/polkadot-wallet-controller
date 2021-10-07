@@ -11,6 +11,7 @@ const {
     },
     POLKADOT_TRANSACTION_TYPE: {
         NATIVE_TRANSFER,
+        STACKING
     },
     POLKADOT_DECIMAL: {
         TESTNET_DECIMAL, // Polkadot testnet is WESTEND 
@@ -64,11 +65,13 @@ describe('Initialize wallet ', () => {
     })
 
     it("Sign Transaction", async () => {
-        const { signedTransaction } = await dotWallet.signTransaction(DOT_TXN_PARAM.transaction, DOT_TXN_PARAM.connectionUrl);
+        const { signedTransaction, provider } = await dotWallet.signTransaction(DOT_TXN_PARAM.transaction, DOT_TXN_PARAM.connectionUrl);
         console.log("signedTransaction ", signedTransaction)
 
         const sendTransaction = await dotWallet.sendTransaction(signedTransaction, DOT_TXN_PARAM.connectionUrl)
         console.log("sendTransaction ", sendTransaction.transactionDetails)
+
+        provider.disconnect()
     })
 
 })

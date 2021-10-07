@@ -3,7 +3,8 @@ module.exports = {
         HD_PATH: `m/44'/354'/0'/0'`,
     },
     polkadot_transaction: {
-        NATIVE_TRANSFER: "NATIVE_TRANSFER"
+        NATIVE_TRANSFER: "NATIVE_TRANSFER",
+        STACKING: "STACKING"
     },
     polkadot_network: {
         MAINNET: {
